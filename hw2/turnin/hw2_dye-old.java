@@ -6,7 +6,7 @@
 public class ChristopherWalkenQuotes {
 	
 	// internal datastructure
-	private Collection<String> quotes = new HashSet<String>();
+	private Collection<String> quotes = new ArrayList<String>();
 	
 	public ChristopherWalkenQuotes(Collection<String> collection) {
 		quotes.addAll(collection);
@@ -14,15 +14,28 @@ public class ChristopherWalkenQuotes {
 	
 	public void add(String quote) {
 		quotes.add(quote);
+		// TODO enforce uniqueness internally
 	}
 	
 	public boolean remove(Object obj) {
-		return quotes.remove(obj);
+		boolean found = false;
+		while (remove(obj)) {
+			found = true;
+		}
+		return found;
 	}
 	
 	// returns a collection of quotes in ChristopherWalkenQuotes
 	public Collection<String> contained() {
-		return new HashSet<Quote>(quotes);
+		ArrayList<String> retval = new ArrayList<String>();
+		
+		for (String quote : quotes) {
+			if (!retval.contains(quote)) {
+				retval.add(quote);
+			}
+		}
+		
+		return retval;
 	}
 	
 }
