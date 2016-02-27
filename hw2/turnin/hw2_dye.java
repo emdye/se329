@@ -6,13 +6,13 @@
 public class ChristopherWalkenQuotes {
 	
 	// internal datastructure
-	private Collection<String> quotes = new ArrayList<String>();
+	private Collection<Quote> quotes = new ArrayList<Quote>();
 	
-	public ChristopherWalkenQuotes(Collection<String> collection) {
+	public ChristopherWalkenQuotes(Collection<Quote> collection) {
 		quotes.addAll(collection);
 	}
 	
-	public void add(String quote) {
+	public void add(Quote quote) {
 		quotes.add(quote);
 		// TODO enforce uniqueness internally
 	}
@@ -26,16 +26,23 @@ public class ChristopherWalkenQuotes {
 	}
 	
 	// returns a collection of quotes in ChristopherWalkenQuotes
-	public Collection<String> contained() {
-		ArrayList<String> retval = new ArrayList<String>();
+	public Collection<Quote> contained() {
+		ArrayList<Quote> retval = new ArrayList<Quote>();
 		
-		for (String quote : quotes) {
+		for (Quote quote : quotes) {
 			if (!retval.contains(quote)) {
 				retval.add(quote);
 			}
 		}
 		
 		return retval;
+	}
+	
+	public class Quote {
+		public String theQuote;
+		public Quote(String s) {
+			this.theQuote = s;
+		}
 	}
 	
 }
