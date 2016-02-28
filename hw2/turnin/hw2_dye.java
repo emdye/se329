@@ -6,13 +6,13 @@
 public class ChristopherWalkenQuotes {
 	
 	// internal datastructure
-	private Collection<String> quotes = new HashSet<String>();
+	private Collection<Quote> quotes = new HashSet<Quote>();
 	
-	public ChristopherWalkenQuotes(Collection<String> collection) {
+	public ChristopherWalkenQuotes(Collection<Quote> collection) {
 		quotes.addAll(collection);
 	}
 	
-	public void add(String quote) {
+	public void add(Quote quote) {
 		quotes.add(quote);
 	}
 	
@@ -21,8 +21,15 @@ public class ChristopherWalkenQuotes {
 	}
 	
 	// returns a collection of quotes in ChristopherWalkenQuotes
-	public Collection<String> contained() {
+	public Collection<Quote> contained() {
 		return new HashSet<Quote>(quotes);
+	}
+	
+	public class Quote {
+		public String theQuote;
+		public Quote(String s) {
+			this.theQuote = s;
+		}
 	}
 	
 }
